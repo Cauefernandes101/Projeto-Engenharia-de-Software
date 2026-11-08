@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://use.typekit.net/fcd8hzk.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Livros</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo" >
+    <img src="imagens\Captura de tela 2026-05-07 174437.png" width="80" height="80">
+    <a href="PaginaInicial.html" class="link-inicial"><h1>Estante Pública</h1></a>
+  </div>
+  <div class="header-right">
+    <div class="search-container">
+      <input type="text" class="search" id="inputLivro" placeholder="Digite o nome do livro..." autocomplete="off">
+      <div id="listaSugestoes" class="sugestoes"></div>
+    </div>
+    <img src="https://i.pinimg.com/564x/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.jpg" alt="Smiley face" style="float:left; width:42px; height:42px; ">
+    <a href="/Perfil"><span class="perfil">Perfil</span></a>
+  </div>
+</header>
+<main>
+<div class="biblioteca">
+    <div class="abas">
+      
+      <div class="aba" onclick="filtrar('lendo', this)">
+        Lendo
+      </div>
+
+      <div class="aba" onclick="filtrar('planejo ler', this)">
+        Planejo Ler
+      </div>
+
+      <div class="aba" onclick="filtrar('lido', this)">
+        Lidos
+      </div>
+        
+    </div>
+    
+  
+<div class="livro-lista">
+
+
+    <!-- Livros -->
+    <% livros.forEach(livro => { %>
+
+      <div class="livro-esquerda" data-status="<%= livro.status %>">
+
+        <img src="<%= livro.capa %>" alt="capa do livro">
+    
+            <div class="titulo">
+                <%= livro.titulo %>
+            </div>
+    
+            <div class="autor">
+                <%= livro.Autor %>
+            </div>
+    
+            <div class="estrelas">
+    
+                <% 
+                  const estrelas = Math.round(livro.nota || 0);
+                  for(let i = 0; i < 5; i++) {
+                %>
+    
+                  <span>
+                    <%= i < estrelas ? "★" : "☆" %>
+                  </span>
+    
+                <% } %>
+    
+            </div>
+    
+            <div class="generos">
+    
+                <% livro.generos.forEach(genero => { %>
+    
+                    <div>
+                        <%= genero %>
+                    </div>
+    
+                <% }) %>
+    
+                  </div>
+
+                  <form action="/remover_livro" method="POST">
+
+                  <input 
+                    type="hidden" 
+                    name="titulo" 
+                    value="<%= livro.titulo %>"
+                  >
+
+                  <button class="botao-remover">
+                    Remover
+                  </button>
+
+                </form>
+    
+    </div>
+
+  <% }) %>
+
+
+</div>
+</main>
+<footer>
+  <p class="footer">Desenvolvedores: Cauê e Alexandre</p>
+</footer>
+<script src="/busca.js" defer></script>
+<script>
+function filtrar(status, elemento) {
+  const livros = document.querySelectorAll(".livro-esquerda");
+  const abas = document.querySelectorAll(".aba");
+
+  abas.forEach(aba => aba.classList.remove("aba-ativa"));
+  elemento.classList.add("aba-ativa");
+
+  livros.forEach(livro => {
+    const livroStatus = livro.dataset.status.trim().toLowerCase();
+
+    if (livroStatus === status) {
+      livro.style.display = "flex";
+    } else {
+      livro.style.display = "none";
+    }
+  });
+}
+
+
+</script>
+</body>
+</html>

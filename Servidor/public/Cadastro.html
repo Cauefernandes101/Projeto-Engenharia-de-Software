@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://use.typekit.net/fcd8hzk.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo" >
+    <img src="imagens\Captura de tela 2026-05-07 174437.png" width="80" height="80">
+    <a href="PaginaInicial.html" class="link-inicial"><h1>Estante Pública</h1></a>
+  </div>
+  <div class="header-right">
+    <div class="search-container">
+      <input type="text" class="search" id="inputLivro" placeholder="Digite o nome do livro..." autocomplete="off">
+      <div id="listaSugestoes" class="sugestoes"></div>
+    </div>
+    <img src="https://i.pinimg.com/564x/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.jpg" alt="Smiley face" style="float:left; width:42px; height:42px; ">
+    <a href="/Perfil"><span class="perfil">Perfil</span></a>
+    
+  </div>
+</header>
+
+<main>
+  <div class="image-blurred-edge-1"></div>
+  <div class="image-blurred-edge-2"></div>
+  <div class="centralizer">
+    <div >
+      <h1 > Faça o seu cadastro:</h1>
+        
+
+    <div >
+        <form method="post" action="/cadastrar_usuario">
+            <div>Cadastre o seu usuário: <input type="text" name="nome"></div>
+            <div>Cadastre a sua senha: <input type="password" name="senha"></div>
+            <input type="submit" value="Cadastrar">
+            </form>
+    </div>  
+  </div>
+</div>   
+</main>
+<footer>
+  <p class="footer">Desenvolvedores: Cauê e Alexandre</p>
+</footer>
+<script src="busca.js" defer>
+
+</script>
+
+</body>
+</html>

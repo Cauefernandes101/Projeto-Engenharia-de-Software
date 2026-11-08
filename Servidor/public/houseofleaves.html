@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://use.typekit.net/fcd8hzk.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House of Leaves</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="header">
+  <div class="logo" >
+    <img src="imagens\Captura de tela 2026-05-07 174437.png" width="80" height="80">
+    <a href="PaginaInicial.html" class="link-inicial"><h1>Estante Pública</h1></a>
+  </div>
+  <div class="header-right">
+    <div class="search-container">
+      <input type="text" class="search" id="inputLivro" placeholder="Digite o nome do livro..." autocomplete="off">
+      <div id="listaSugestoes" class="sugestoes"></div>
+    </div>
+    <img src="https://i.pinimg.com/564x/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.jpg" alt="Smiley face" style="float:left; width:42px; height:42px; ">
+    <a href="/Perfil"><span class="perfil">Perfil</span></a>
+  </div>
+</header>
+
+  <main class="info-livro">
+
+    <section class="livro-area">
+
+      <div class="livro-critica"><img
+        src="https://m.media-amazon.com/images/I/711hUvzvB7L._AC_UF1000,1000_QL80_.jpg"
+        alt="houseofleaves"
+      ></div>
+
+      <div class="titulo-livro">
+        <span>House of Leaves</span>
+      </div>
+
+      <div class="info">
+        <strong>Autor(a):</strong> Mark Z. Danielewski
+      </div>
+
+      <div class="info">
+        <strong>Ano de Lançamento:</strong> 2000
+      </div>
+
+      <div class="generos">
+        <strong>Gêneros:</strong> Ficção Científica, Mistério, Horror
+      </div>
+
+      <div class="sinopse">
+        Sinopse: Johnny Truant, um jovem a procura de um apartamento, que 
+        recebe uma dica de seu amigo Lude de um apartamento perto de um velho 
+        meio caduco que está à venda. Ele se muda para lá e encontra um manuscrito 
+        que conta a história de um documentário sobre uma família que se muda para 
+        uma casa que é maior por dentro do que por fora...
+      </div>
+      <form action="/adicionar_livro" method="POST">
+        <input type="hidden" name="Autor" value="Mark Z. Danielewski">
+        <input type="hidden" name="generos" value="Ficção Científica, Mistério, Horror">
+        <input type="hidden" name="titulo" value="House of Leaves">
+        <input type="hidden" name="capa" value="https://m.media-amazon.com/images/I/711hUvzvB7L._AC_UF1000,1000_QL80_.jpg">
+        <select name="status">
+
+        <option value="Planejo Ler">
+          Planejo Ler
+        </option>
+
+        <option value="Lendo">
+          Lendo
+        </option>
+
+        <option value="Lido">
+          Lido
+        </option>
+
+        </select>
+        <button type="submit">
+          Adicionar à Estante 
+        </button>
+        <label>
+
+          Nota:
+
+        </label>
+
+        <select name="nota">
+
+          <option value="0">
+            Sem nota
+          </option>
+
+          <option value="1">
+            ⭐ 1
+          </option>
+
+          <option value="2">
+            ⭐⭐ 2
+          </option>
+
+          <option value="3">
+            ⭐⭐⭐ 3
+          </option>
+
+          <option value="4">
+            ⭐⭐⭐⭐ 4
+          </option>
+
+          <option value="5">
+            ⭐⭐⭐⭐⭐ 5
+          </option>
+
+        </select>
+      </form>
+    </section>
+
+    <section class="criticas-area">
+
+      <h2>Críticas</h2>
+      
+      <div class="card-critica">
+
+        <div class="usuario">
+
+          <div class="avatar"><img src="https://i.pinimg.com/564x/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.jpg"></div>
+
+          <div class="conteudo-critica">
+            <h3>Nome do Usuario</h3>
+            <p>Resenha e Crítica</p>
+          </div>
+          <h4>Escreva:</h4>
+          <form method="post" action="/Escrever_Critica">
+          <textarea name="resposta" rows="4" cols="80" placeholder="Digite sua Critica..."></textarea><br>
+          <input type="hidden" name="arquivo" value="houseofleaves.html">
+          <input type="submit" value="Enviar">
+          </form>
+        </div>
+
+
+
+      </div>
+
+    </section>
+
+  </main>
+<footer>
+  <p class="footer">Desenvolvedores: Cauê e Alexandre</p>
+</footer>
+<script src="busca.js" defer></script>
+</body>
+</html>

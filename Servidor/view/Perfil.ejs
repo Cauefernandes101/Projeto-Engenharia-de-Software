@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://use.typekit.net/fcd8hzk.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+  <link rel="stylesheet" href="estilo.css">
+ 
+</head>
+<body>
+
+<header class="header">
+  <div class="logo" >
+    <img src="imagens\Captura de tela 2026-05-07 174437.png" width="80" height="80">
+    <a href="PaginaInicial.html" class="link-inicial"><h1>Estante Pública</h1></a>
+  </div>
+  <div class="header-right">
+    <div class="search-container">
+      <input type="text" class="search" id="inputLivro" placeholder="Digite o nome do livro..." autocomplete="off">
+      <div id="listaSugestoes" class="sugestoes"></div>
+    </div>
+    <img src="https://i.pinimg.com/564x/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.jpg" alt="Smiley face" style="float:left; width:42px; height:42px; ">
+    <span class="perfil">Perfil</span>
+    
+  </div>
+</header>
+<main>
+<div class="container1">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="usuario-img"><img src="https://i.pinimg.com/564x/c7/ab/cd/c7abcd3ce378191a3dddfa4cdb2be46f.jpg" alt="Smiley face" style="width: 150px; height: 150px;"></div>
+      
+      <a href="/logout"><button style="  background-color: #a4161a;color:white"  >Sair da Sessão</button></a>
+      <a href="lista_de_livros" class="link-livro"><button>Lista de Livros</button></a>
+      
+
+      <div class="grafico">
+        
+
+      <canvas id="graficoGeneros"></canvas>
+
+
+      </div>
+
+
+    </aside>
+      <div >
+        <h2>Leituras Recentes</h2>
+          <section>
+            
+            <div class="scroll livros">
+              <div class="livro"><a href="harrypotter_pedrafilosofal.html" class="link-livro"><img src="https://m.media-amazon.com/images/I/91wKDODkgWL._AC_UF1000,1000_QL80_.jpg"><p>Harry Potter</p></div></a>
+              <div class="livro"><a href="TheGodfather.html" class="link-livro"><img src="https://m.media-amazon.com/images/I/51t39SMRzjL._AC_UF1000,1000_QL80_.jpg"><p>The Godfather</p></div></a>
+              <div class="livro"><a href="hungergames.html" class="link-livro"><img src="https://m.media-amazon.com/images/I/61I24wOsn8L._AC_UF1000,1000_QL80_.jpg"><p>Hunger Games</p></a></div>
+              
+            </div>
+          </section>
+      <!-- Livros Lidos -->
+      <div >
+        <h2>Adicionados recentemente</h2>
+          <section>
+            
+            <div class="scroll livros">
+              <div class="livro"><a href="harrypotter_pedrafilosofal.html" class="link-livro"><img src="https://m.media-amazon.com/images/I/91wKDODkgWL._AC_UF1000,1000_QL80_.jpg"><p>Harry Potter</p></div></a>
+              <div class="livro"><a href="TheGodfather.html" class="link-livro"><img src="https://m.media-amazon.com/images/I/51t39SMRzjL._AC_UF1000,1000_QL80_.jpg"><p>The Godfather</p></div></a>
+              <div class="livro"><a href="hungergames.html" class="link-livro"><img src="https://m.media-amazon.com/images/I/61I24wOsn8L._AC_UF1000,1000_QL80_.jpg"><p>Hunger Games</p></a></div>
+            </div>
+          </section>
+
+      </div>
+
+    
+      
+
+    </section>
+    </aside>
+  
+</div>   
+</main>
+<footer>
+  <p class="footer">Desenvolvedores: Cauê e Alexandre</p>
+</footer>
+  
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>  
+
+let grafico;
+
+async function carregarGrafico() {
+
+  try {
+
+    const resposta = await fetch("/dados_generos");
+
+    const dados = await resposta.json();
+
+    console.log(dados);
+
+    const labels = Object.keys(dados);
+
+    const valores = Object.values(dados);
+
+    const ctx = document.getElementById("graficoGeneros");
+
+    if (grafico) {
+
+      grafico.destroy();
+
+    }
+
+    grafico = new Chart(ctx, {
+
+      type: "pie",
+
+      data: {
+
+        labels: labels,
+
+        datasets: [{
+
+          label: "Gêneros",
+
+          data: valores,
+
+          backgroundColor: [
+
+            "#ff6384",
+            "#36a2eb",
+            "#ffce56",
+            "#4bc0c0",
+            "#9966ff",
+            "#ff9f40",
+            "#8ac926",
+            "#c77dff"
+
+          ],
+
+          borderWidth: 1
+
+        }]
+
+      },
+
+      options: {
+
+        responsive: true,
+
+        plugins: {
+
+          legend: {
+
+            position: "bottom"
+
+          }
+
+        }
+
+      }
+
+    });
+
+  } catch (erro) {
+
+    console.log("Erro ao carregar gráfico:", erro);
+
+  }
+
+}
+
+carregarGrafico();
+
+
+</script>    
+<script src="/busca.js" defer>
+
+</script>
+</body>
+</html>
