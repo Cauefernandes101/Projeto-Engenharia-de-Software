@@ -467,10 +467,27 @@ input[type="submit"]:hover{
 }
 
 .livro-esquerda img {
-  width: 10%;
-  height: 10%;
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
 }
-
+.livro-esquerda .link-livro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.livro-esquerda .titulo {
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: bold;
+  width: 150px;
+}
 .titulo {
   font-size: 20px;
   line-height: 1.2;

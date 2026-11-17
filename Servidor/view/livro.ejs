@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://use.typekit.net/fcd8hzk.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= livro.titulo %> - Estante Pública</title>
+  <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <img src="/imagens/logo.png" width="80" height="80">
+    <a href="/" class="link-inicial">
+      <h1>Estante Pública</h1>
+    </a>
+  </div>
+
+  <div class="header-right">
+    <div class="search-container">
+      <input
+        type="text"
+        class="search"
+        id="inputLivro"
+        placeholder="Digite o nome do livro..."
+        autocomplete="off"
+      >
+      <div id="listaSugestoes" class="sugestoes"></div>
+    </div>
+
+    <a href="/Perfil">
+      <span class="perfil">Perfil</span>
+    </a>
+  </div>
+</header>
+
+<main class="info-livro">
+
+  <!-- INFORMAÇÕES DO LIVRO -->
+  <section class="livro-area">
+
+    <div class="livro-critica">
+      <img src="<%= livro.capa %>" alt="Capa de <%= livro.titulo %>">
+    </div>
+
+    <div class="titulo-livro">
+      <span><%= livro.titulo %></span>
+    </div>
+
+    <div class="info">
+      <strong>Autor(a):</strong>
+      <%= livro.Autor %>
+    </div>
+
+    <div class="info">
+      <strong>Ano de Lançamento:</strong>
+      <%= livro.ano || "Não informado" %>
+    </div>
+
+    <div class="generos">
+      <strong>Gêneros:</strong>
+      <%= (livro.generos || []).join(", ") %>
+    </div>
+
+    <div class="sinopse">
+      <strong>Sinopse:</strong>
+      <%= livro.sinopse || "Sinopse não cadastrada." %>
+    </div>
+
+    <!-- ADICIONAR À ESTANTE -->
+    <form action="/adicionar_livro" method="POST">
+
+      <input type="hidden" name="titulo" value="<%= livro.titulo %>">
+      <input type="hidden" name="Autor" value="<%= livro.Autor %>">
+      <input type="hidden" name="capa" value="<%= livro.capa %>">
+      <input type="hidden" name="generos" value="<%= (livro.generos || []).join(', ') %>">
+
+      <label>Status:</label>
+
+      <select name="status" required>
+        <option value="planejo">Planejo Ler</option>
+        <option value="lendo">Lendo</option>
+        <option value="lido">Lido</option>
+      </select>
+
+      <label>Nota:</label>
+
+      <select name="nota">
+        <option value="0">Sem nota</option>
+        <option value="1">⭐ 1</option>
+        <option value="2">⭐⭐ 2</option>
+        <option value="3">⭐⭐⭐ 3</option>
+        <option value="4">⭐⭐⭐⭐ 4</option>
+        <option value="5">⭐⭐⭐⭐⭐ 5</option>
+      </select>
+
+      <button type="submit">Adicionar à Estante</button>
+
+    </form>
+
+  </section>
+
+  <!-- CRÍTICAS DO LIVRO -->
+  <section class="criticas-area">
+
+    <h2>Críticas</h2>
+
+    <!-- FORMULÁRIO PARA ESCREVER CRÍTICA -->
+    <div class="usuario">
+
+      <h3>Escreva sua crítica:</h3>
+
+      <form
+        method="POST"
+        action="/livro/<%= encodeURIComponent(livro.titulo) %>/criticas"
+      >
+
+        <textarea
+          name="texto"
+          rows="4"
+          cols="80"
+          placeholder="Digite sua crítica sobre este livro..."
+          required
+        ></textarea>
+
+        <button type="submit">Publicar crítica</button>
+
+      </form>
+
+    </div>
+
+    <!-- LISTAGEM DINÂMICA DAS CRÍTICAS -->
+    <% if (criticas.length > 0) { %>
+
+      <% criticas.forEach(critica => { %>
+
+        <div class="card-critica">
+
+          <div class="usuario">
+
+            <div class="avatar">
+              <img
+                src="<%= critica.foto || '/imagens/perfil.png' %>"
+                alt="Foto de perfil"
+              >
+            </div>
+
+            <div class="conteudo-critica">
+
+              <h3><%= critica.usuario %></h3>
+
+              <p><%= critica.texto %></p>
+
+            </div>
+
+          </div>
+
+          <div class="avaliacao">
+            Avaliação:
+            <%= "★".repeat(critica.nota || 0) %><%= "☆".repeat(5 - (critica.nota || 0)) %>
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    <% } else { %>
+
+      <p>Este livro ainda não possui críticas. Seja o primeiro a escrever!</p>
+
+    <% } %>
+
+  </section>
+
+</main>
+
+<footer>
+  <p class="footer">Desenvolvedores: Cauê e Alexandre</p>
+</footer>
+
+<script src="/busca.js" defer></script>
+
+</body>
+</html>

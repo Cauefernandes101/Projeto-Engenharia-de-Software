@@ -2,6 +2,8 @@
 const express = require("express");
 const session = require("express-session");
 const path = require("path");
+const livroRoutes = require("./backend/routes/livroRoutes");
+
 
 require("dotenv").config({
     path: path.join(__dirname, ".env")
@@ -20,6 +22,7 @@ const app = express();
 // A raiz agora é a própria pasta onde está o server.js
 const raiz = __dirname;
 
+app.use("/", livroRoutes);
 // Arquivos estáticos
 app.use(express.static(path.join(raiz, "public")));
 
