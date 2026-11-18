@@ -1,0 +1,155 @@
+INSERTS DA COLEÇÃO catalogo — ESTANTE PÚBLICA
+
+Este documento reúne os registros dos livros utilizados para popular a coleção "catalogo" do banco de dados MongoDB do projeto Estante Pública.
+
+INSTRUÇÕES
+
+1. Abra o MongoDB Compass e acesse o banco de dados utilizado pelo projeto.
+2. Selecione a coleção "catalogo".
+3. Abra a opção "ADD DATA" e escolha "Insert Document" ou utilize o MongoDB Shell.
+4. Para inserir todos os livros de uma só vez pelo MongoDB Shell, copie e execute o comando insertMany abaixo.
+
+Observação: o registro de Moby Dick apareceu duas vezes no conteúdo enviado, com o mesmo _id. Ele foi incluído apenas uma vez neste documento para evitar uma tentativa de inserir um identificador duplicado.
+
+COMANDO DE INSERÇÃO
+
+db.catalogo.insertMany([
+  {
+    _id: ObjectId("6afc7756036fd59d60e40cb4"),
+    titulo: "Harry Potter e a Pedra Filosofal",
+    Autor: "J.K. Rowling",
+    ano: NumberInt(1997),
+    capa: "https://m.media-amazon.com/images/I/91wKDODkgWL._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Fantasia",
+      "Aventura"
+    ],
+    sinopse: "Um jovem descobre que é um bruxo e passa a estudar em uma escola de magia."
+  },
+  {
+    _id: ObjectId("6afc778b036fd59d60e40cb6"),
+    titulo: "The Shining",
+    Autor: "Stephen King",
+    ano: NumberInt(1977),
+    capa: "https://m.media-amazon.com/images/I/91U7HNa2NQL.jpg",
+    generos: [
+      "Horror",
+      "Mistério",
+      "Suspense"
+    ],
+    sinopse: "Uma família passa a viver em um hotel isolado durante o inverno, onde acontecimentos sobrenaturais começam a ameaçar sua sanidade."
+  },
+  {
+    _id: ObjectId("6afcf0ef29c549a82e704f88"),
+    titulo: "11/22/63",
+    Autor: "Stephen King",
+    ano: NumberInt(2011),
+    capa: "https://m.media-amazon.com/images/I/717e5mrJz+L._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Ficção Científica",
+      "Mistério"
+    ],
+    sinopse: "Em 22 de novembro de 1963, três tiros foram disparados em Dallas: o presidente John F. Kennedy foi assassinado. O que aconteceria se alguém pudesse voltar no tempo e impedir esse crime? Jake Epping, um professor de inglês do Maine, tem a chance de descobrir a resposta quando um amigo lhe revela um portal para o passado. Ele é enviado de volta a 1958 para impedir o assassinato de Kennedy, mas logo percebe que mudar o passado tem consequências imprevisíveis."
+  },
+  {
+    _id: ObjectId("6afc7827036fd59d60e40cc6"),
+    titulo: "The Hunger Games",
+    Autor: "Suzanne Collins",
+    ano: NumberInt(2008),
+    capa: "https://m.media-amazon.com/images/I/61I24wOsn8L._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Aventura",
+      "Ficção Científica"
+    ],
+    sinopse: "Na região antigamente conhecida como América do Norte, a Capital de Panem controla 12 distritos e os força a escolher um garoto e uma garota para competir nos Jogos Vorazes, um evento anual em que os participantes devem lutar até a morte."
+  },
+  {
+    _id: ObjectId("6afc77d1036fd59d60e40cc4"),
+    titulo: "House of Leaves",
+    Autor: "Mark Z. Danielewski",
+    ano: NumberInt(2000),
+    capa: "https://m.media-amazon.com/images/I/711hUvzvB7L._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Ficção Científica",
+      "Mistério",
+      "Horror"
+    ],
+    sinopse: "Uma família descobre que sua casa possui dimensões impossíveis, dando início a uma experiência perturbadora que mistura mistério, terror e realidade."
+  },
+  {
+    _id: ObjectId("6afc77c7036fd59d60e40cc2"),
+    titulo: "A Metamorfose",
+    Autor: "Franz Kafka",
+    ano: NumberInt(1915),
+    capa: "https://m.media-amazon.com/images/I/715JOcuqSSL._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Ficção",
+      "Literatura Clássica"
+    ],
+    sinopse: "Gregor Samsa acorda transformado em um inseto monstruoso e precisa enfrentar as consequências dessa mudança em sua vida e em sua família."
+  },
+  {
+    _id: ObjectId("6afc77bf036fd59d60e40cc0"),
+    titulo: "Moby Dick",
+    Autor: "Herman Melville",
+    ano: NumberInt(1851),
+    capa: "https://http2.mlstatic.com/D_NQ_NP_750888-MLA90660619164_082025-O.webp",
+    generos: [
+      "Aventura",
+      "Épico"
+    ],
+    sinopse: "O capitão Ahab conduz sua tripulação em uma obsessiva perseguição à baleia branca Moby Dick."
+  },
+  {
+    _id: ObjectId("6afc77b7036fd59d60e40cbe"),
+    titulo: "To Kill a Mockingbird",
+    Autor: "Harper Lee",
+    ano: NumberInt(1960),
+    capa: "https://m.media-amazon.com/images/I/81O7u0dGaWL._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Suspense",
+      "Drama"
+    ],
+    sinopse: "Pela perspectiva de uma criança, a história aborda preconceito, injustiça e desigualdade durante um julgamento em uma pequena cidade americana."
+  },
+  {
+    _id: ObjectId("6afc77ad036fd59d60e40cbc"),
+    titulo: "Solo Leveling - Livro 1",
+    Autor: "Chu-Gong",
+    ano: NumberInt(2019),
+    capa: "https://m.media-amazon.com/images/I/91qopkoVAiL._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Ação",
+      "Aventura",
+      "Ficção Científica"
+    ],
+    sinopse: "Sung Jin-Woo, conhecido como o caçador mais fraco, recebe uma oportunidade misteriosa que permite evoluir suas habilidades e ficar cada vez mais poderoso."
+  },
+  {
+    _id: ObjectId("6afc779d036fd59d60e40cba"),
+    titulo: "The Godfather",
+    Autor: "Mario Puzo",
+    ano: NumberInt(1969),
+    capa: "https://m.media-amazon.com/images/I/51t39SMRzjL._AC_UF1000,1000_QL80_.jpg",
+    generos: [
+      "Crime",
+      "Suspense",
+      "Mistério"
+    ],
+    sinopse: "A história da família Corleone, uma poderosa organização mafiosa, e dos conflitos envolvendo poder, lealdade e sucessão."
+  },
+  {
+    _id: ObjectId("6afc7794036fd59d60e40cb8"),
+    titulo: "The Great Gatsby",
+    Autor: "F. Scott Fitzgerald",
+    ano: NumberInt(1925),
+    capa: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-wFkGqobEuHMJJ9DfqD_xLJWqgPQZhWgzow&s",
+    generos: [
+      "Romance",
+      "Suspense"
+    ],
+    sinopse: "Em meio à riqueza e às festas da década de 1920, Jay Gatsby busca reconquistar um amor do passado."
+  }
+]);
+
+FIM DO DOCUMENTO

@@ -1,11 +1,11 @@
 
 // Livros disponíveis na busca
 const livros = [
-    { nome: "Harry Potter" },
+    { nome: "Harry Potter e a Pedra Filosofal" },
     { nome: "The Hunger Games" },
     { nome: "House of Leaves" },
     { nome: "A Metamorfose" },
-    { nome: "Solo Leveling" },
+    { nome: "Solo Leveling - Livro 1" },
     { nome: "Moby Dick" },
     { nome: "To Kill a Mockingbird" },
     { nome: "The Great Gatsby" },
